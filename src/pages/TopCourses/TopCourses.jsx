@@ -12,13 +12,13 @@ const TopCourses = ({ topCourses }) => {
             <h1 className='text-5xl text-[#2f00ff] font-bold text-center  mt-5 md:mt-15'><span className='text-[#FF8811]'>Top Rated</span> Courses</h1>
             <p className='mt-2 text-base-400 text-center'>Explore All Trending Popular Courses on the Mentora offered by us.</p>
             <Suspense fallback={
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 px-4 md:px-16 max-w-full mx-auto'>
-                    {[1, 2, 3].map((i) => (
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-8 px-4 md:px-16 max-w-full mx-auto'>
+                    {[1, 2, 3, 4].map((i) => (
                         <CardSkeleton key={i} />
                     ))}
                 </div>
             }>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 px-4 md:px-16 max-w-full mx-auto'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-8 px-4 md:px-16 max-w-full mx-auto'>
                     {
                         coursesToDisplay.map(course => <CourseCard course={course} key={course._id}></CourseCard>)
                     }

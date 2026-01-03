@@ -48,8 +48,8 @@ const Courses = () => {
                         <div className="skeleton h-10 w-32 rounded-xl"></div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 max-w-full mx-auto">
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-8 max-w-full mx-auto">
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                         <CardSkeleton key={i} />
                     ))}
                 </div>
@@ -104,14 +104,14 @@ const Courses = () => {
 
             {/* Courses Grid */}
             {searchLoading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 max-w-full mx-auto">
-                    {[1, 2, 3].map((i) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-8 max-w-full mx-auto">
+                    {[1, 2, 3, 4].map((i) => (
                         <CardSkeleton key={i} />
                     ))}
                 </div>
             ) : (
                 <Suspense fallback={<span>Loading courses...</span>}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 max-w-full mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-8 max-w-full mx-auto">
                         {filteredCourses.map(course => (
                             <CourseCard key={course._id} course={course} />
                         ))}
