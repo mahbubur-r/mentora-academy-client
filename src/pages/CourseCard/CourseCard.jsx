@@ -9,13 +9,15 @@ const CourseCard = ({ course }) => {
         <div className="rounded-2xl bg-base-100 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-base-200">
             <div className="flex flex-col h-[470px]">
                 {/* Image */}
-                <figure className="bg-base-100 pt-5 rounded-t-2xl h-[180px] flex justify-center items-center overflow-hidden transition-colors duration-500">
-                    <img
-                        className="h-full object-contain hover:scale-105 transition-transform duration-300"
-                        src={image}
-                        alt={title}
-                    />
-                </figure>
+                <Link to={`/courseDetails/${_id}`} className="block h-full cursor-pointer">
+                    <figure className="bg-base-100 pt-5 rounded-t-2xl h-[180px] flex justify-center items-center overflow-hidden transition-colors duration-500">
+                        <img
+                            className="h-full object-contain hover:scale-105 active:scale-95 transition-transform duration-300"
+                            src={image}
+                            alt={title}
+                        />
+                    </figure>
+                </Link>
 
                 {/* Content */}
                 <div className="flex-1 flex flex-col justify-between p-5">
@@ -42,7 +44,7 @@ const CourseCard = ({ course }) => {
                     <Link to={`/courseDetails/${_id}`} className="mt-4">
                         <button className="w-full py-2.5 rounded-lg bg-gradient-to-r from-[#FF8811] via-[#ff9e42] to-[#FF8811] 
                        text-white font-semibold tracking-wide shadow-md hover:shadow-lg
-                       transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]">
+                       transition-all duration-300 hover:scale-[1.03] active:scale-[0.95]">
                             View Details
                         </button>
                     </Link>

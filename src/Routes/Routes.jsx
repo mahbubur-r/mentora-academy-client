@@ -7,6 +7,7 @@ import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import PrivateRoute from '../provider/PrivateRoute';
 import Loading from '../pages/Loading/Loading';
+import DetailsLoading from '../pages/Loading/DetailsLoading';
 import UpdateProfile from '../pages/UpdateProfile/UpdateProfile';
 import MyProfile from '../pages/MyProfile/MyProfile';
 import TopCourses from '../pages/TopCourses/TopCourses';
@@ -64,7 +65,18 @@ export const router = createBrowserRouter([
       },
       {
         path: '/top-courses',
-        Component: TopCourses
+        Component: TopCourses,
+        loader: async () => {
+          try {
+            const res = await fetch("https://mentora-academy-server.vercel.app/top-courses");
+            if (!res.ok) throw new Error("Failed to fetch top courses");
+            return await res.json();
+          } catch (err) {
+            console.error(err);
+            return [];
+          }
+        },
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: '/enrolled-courses',
@@ -74,26 +86,23 @@ export const router = createBrowserRouter([
         path: '/courseDetails/:id',
         // loader: ({params}) => fetch(`http://localhost:3000/courses/${params.id}`),
         loader: ({ params }) => fetch(`https://mentora-academy-server.vercel.app/courses/${params.id}`),
-        element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
-        hydrateFallbackElement: <Loading></Loading>,
-        // Component: CourseDetails
+        element: <CourseDetails></CourseDetails>,
+        hydrateFallbackElement: <DetailsLoading></DetailsLoading>,
       },
       {
         path: '/myAddedCourseDetails/:id',
         // loader: ({ params }) => fetch(`http://localhost:3000/add_new_courses/${params.id}`),
         loader: ({ params }) => fetch(`https://mentora-academy-server.vercel.app/add_new_courses/${params.id}`),
         element: <PrivateRoute><MyAddedCourseDetails></MyAddedCourseDetails></PrivateRoute>,
-        hydrateFallbackElement: <Loading></Loading>,
+        hydrateFallbackElement: <DetailsLoading></DetailsLoading>,
       },
       {
         path: '/addNewCourses',
         element: <PrivateRoute><AddNewCourse></AddNewCourse></PrivateRoute>,
-        // Component: AddNewCourse
       },
       {
         path: '/myAddedCourses',
         element: <PrivateRoute><MyAddedCourses></MyAddedCourses></PrivateRoute>,
-        // Component: MyAddedCourses
       },
       {
         path: '/updateCourse/:id',

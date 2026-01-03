@@ -1,86 +1,111 @@
 import React from 'react';
+import { Link } from 'react-router';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div>
-            <section className="bg-[#1e003e] text-white py-16 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-3xl mx-auto text-center">
-                    {/* Section Title */}
-                    <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
-                        Why You Choose Us
-                    </h2>
-                    <p className="text-lg text-gray-300 mb-8">
-                        Join our newsletter for exclusive course launches, tips & insider updates.
-                    </p>
-
-                    <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div className="p-4 bg-[#2a005e] rounded-lg shadow">
-                            <h3 className="text-xl font-semibold mb-2">Multi-Type Courses</h3>
-                            <p className="text-gray-300 text-sm">
-                                Access a wide range of courses across different fields and categories.
-                            </p>
+        <footer className="bg-black text-white pt-16 pb-8">
+            <div className="px-4 md:px-16 max-w-[2500px] mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                    {/* Brand Section */}
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                            <img src="/logo.png" alt="Mentora Logo" className="w-10 h-10 rounded-full" />
+                            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#ffcc00] to-[#ff00e4]">
+                                Mentora Academy
+                            </span>
                         </div>
-                        <div className="p-4 bg-[#2a005e] rounded-lg shadow">
-                            <h3 className="text-xl font-semibold mb-2">Upload Your Course</h3>
-                            <p className="text-gray-300 text-sm">
-                                Share your knowledge by uploading your own courses and reach learners globally.
-                            </p>
-                        </div>
-                        <div className="p-4 bg-[#2a005e] rounded-lg shadow">
-                            <h3 className="text-xl font-semibold mb-2">Student Discounts & Free Offers</h3>
-                            <p className="text-gray-300 text-sm">
-                                Get monthly free courses and exclusive discounts for students.
-                            </p>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                            Empowering learners worldwide with cutting-edge skills. Join our community and start your journey today.
+                        </p>
+                        <div className="flex gap-4 pt-2">
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#1877F2] transition text-xl">
+                                <FaFacebook />
+                            </a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#1DA1F2] transition text-xl">
+                                <FaTwitter />
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0A66C2] transition text-xl">
+                                <FaLinkedin />
+                            </a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#E4405F] transition text-xl">
+                                <FaInstagram />
+                            </a>
                         </div>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
-                        Stay Ahead in Courses
-                    </h2>
 
-                    <form className="sm:flex sm:justify-center">
-                        <input
-                            type="email"
-                            name="email"
-                            required
-                            placeholder="Enter your email address"
-                            className="w-full sm:w-2/3 md:w-1/2 px-5 py-3 rounded-lg text-white border-1 focus:ring-[#ffcc00]"
-                        />
-                        <button
-                            type="submit"
-                            className="mt-4 sm:mt-0 sm:ml-4 px-6 py-3 text-center bg-gradient-to-r from-[#ffcc00] to-[#ff00e4] font-semibold rounded-lg hover:bg-[#e6b800] transition"
-                        >
-                            Subscribe Now
-                        </button>
-                    </form>
+                    {/* Quick Links */}
+                    <div>
+                        <h3 className="text-lg font-bold mb-6 text-white border-b-2 border-[#ffcc00] inline-block pb-1">Quick Links</h3>
+                        <ul className="space-y-3 text-gray-400">
+                            <li>
+                                <Link to="/" className="hover:text-[#ffcc00] transition flex items-center gap-2">
+                                    <span>Home</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/courses" className="hover:text-[#ffcc00] transition flex items-center gap-2">
+                                    <span>All Courses</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/top-courses" className="hover:text-[#ffcc00] transition flex items-center gap-2">
+                                    <span>Top Rated</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/login" className="hover:text-[#ffcc00] transition flex items-center gap-2">
+                                    <span>Login</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
 
-                    <p className="text-sm text-gray-400 mt-4">
-                        We respect your inbox. Unsubscribe anytime.
-                    </p>
+                    {/* Support */}
+                    <div>
+                        <h3 className="text-lg font-bold mb-6 text-white border-b-2 border-[#ffcc00] inline-block pb-1">Support</h3>
+                        <ul className="space-y-3 text-gray-400">
+                            <li>
+                                <a href="#" className="hover:text-[#ffcc00] transition">Help Center</a>
+                            </li>
+                            <li>
+                                <a href="#" className="hover:text-[#ffcc00] transition">Terms & Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#" className="hover:text-[#ffcc00] transition">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#" className="hover:text-[#ffcc00] transition">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div>
+                        <h3 className="text-lg font-bold mb-6 text-white border-b-2 border-[#ffcc00] inline-block pb-1">Contact Us</h3>
+                        <ul className="space-y-4 text-gray-400">
+                            <li className="flex items-start gap-3">
+                                <FaMapMarkerAlt className="text-[#ffcc00] mt-1 shrink-0" />
+                                <span>123 Education Street, Learning City, ED 45678</span>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <FaPhone className="text-[#ffcc00] shrink-0" />
+                                <a href="tel:+1234567890" className="hover:text-white transition">+1 (234) 567-890</a>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <FaEnvelope className="text-[#ffcc00] shrink-0" />
+                                <a href="mailto:support@mentora.com" className="hover:text-white transition">support@mentora.com</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </section>
 
-            <div className='text-white bg-[#000000] md:max-w-[2500px] md:h-[300px] mx-auto'>
-                <div className=' flex justify-between md:ml-10 items-center'>
-                    <div className='flex justify-between items-center ml-2 md:ml-10'>
-                        <img className='h-[40px] w-[40px] rounded-full' src="/logo.png" alt="" />
-                        <p className=" ml-3 font-bold text-xl text-white">Mentora Academy</p>
-                    </div>
-
-                    <div className='footer-card items-center md:w-[170px] mr-2 mt-3 md:mt-10'>
-                        <h2 className='font-bold'>Social Links</h2>
-                        <div className='flex items-center ml-4 mt-2'>
-                            <i className="mr-2 fa-brands fa-x-twitter"></i>
-                            <i className="mr-2 fa-brands fa-linkedin"></i>
-                            <i className="mr-2 fa-brands fa-facebook"></i>
-                        </div>
-                    </div>
-                </div>
-                <div className='mt-3 md:mt-20 h-[100px]'>
-                    <div className="border-t border-gray-700 max-w-[1600px] mx-auto"></div>
-                    <p className='text-[#fafafa] font-light text-center mt-2 md:mt-10 py-3'>Copyright © Mentora Academy 2025 - All right reserved</p>
+                {/* Copyright */}
+                <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-500 text-sm">
+                    <p>&copy; {new Date().getFullYear()} Mentora Academy. All rights reserved.</p>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };
 

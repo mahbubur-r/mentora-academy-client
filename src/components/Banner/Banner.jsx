@@ -14,7 +14,7 @@ const Banner = () => {
     ];
 
     return (
-        <div className="flex flex-col-reverse md:flex-row items-center justify-center pt-5 bg-base-100 px-4 md:px-16 overflow-hidden transition-colors duration-500">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-center pt-5 bg-base-100 px-4 md:px-16 overflow-hidden transition-colors duration-500 relative">
 
 
             <div className="md:w-1/2 flex flex-col items-start text-left space-y-6 z-10 relative">
@@ -57,7 +57,7 @@ const Banner = () => {
                     transition={{ duration: 2 }}
                 >
                     <Link to="/courses">
-                        <button className="mt-4 mb-4 px-10 py-4 bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-semibold rounded-xl shadow-2xl hover:scale-105 transition-transform">
+                        <button className="mt-4 mb-4 px-10 py-4 bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-semibold rounded-xl shadow-2xl hover:scale-105 active:scale-95 transition-transform">
                             Discover Courses
                         </button>
                     </Link>
@@ -75,8 +75,8 @@ const Banner = () => {
                     }}
                     pagination={{ clickable: true }}
                     breakpoints={{
-                        0: { slidesPerView: 1 }, 
-                        768: { slidesPerView: 2 },     
+                        0: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
                     }}
                     className="w-full h-[230px] sm:h-[250px] md:h-[300px] rounded-xl"
                 >
@@ -93,6 +93,23 @@ const Banner = () => {
                     ))}
                 </Swiper>
             </div>
+
+            <motion.div
+                className="absolute bottom-5 left-1/2 transform -translate-x-1/2 cursor-pointer text-gray-400 hover:text-[#FF8811] transition-colors"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                    delay: 1,
+                    duration: 1,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                }}
+                onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </motion.div>
         </div>
     );
 };

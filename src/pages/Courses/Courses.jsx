@@ -1,5 +1,6 @@
 import React, { Suspense, use, useEffect, useState } from 'react';
 import CourseCard from '../CourseCard/CourseCard';
+import CardSkeleton from '../../components/Skeleton/CardSkeleton';
 
 // const coursesPromise = fetch('http://localhost:3000/courses')
 const coursesPromise = fetch('https://mentora-academy-server.vercel.app/courses')
@@ -39,14 +40,25 @@ const Courses = () => {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center h-screen">
-                <span className="loading loading-spinner text-primary w-20 h-20"></span>
+            <div className="mt-10 px-4 md:px-16">
+                <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+                    <div className="skeleton h-10 w-80 rounded-xl"></div>
+                    <div className="flex gap-2">
+                        <div className="skeleton h-10 w-64 rounded-xl"></div>
+                        <div className="skeleton h-10 w-32 rounded-xl"></div>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 max-w-full mx-auto">
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                        <CardSkeleton key={i} />
+                    ))}
+                </div>
             </div>
         );
     }
 
     return (
-        <div className="mt-10 px-4 md:mr-6">
+        <div className="mt-10 px-4 md:px-16">
             <title>All Courses</title>
             <div className="flex flex-col md:flex-row justify-between items-center">
                 <h2 className="text-3xl font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#ffcc00] to-[#ff00e4]">
@@ -57,17 +69,17 @@ const Courses = () => {
                     {/* Search Input */}
                     <input
                         type="text"
-                        placeholder="Search courses by name..."
+                        placeholder="Search courses..."
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        className="px-4 py-2 border-2 border-orange-500 rounded-l-md w-64 focus:outline-none focus:ring-2 focus:ring-orange-500 text-orange-600 placeholder-orange-400"
+                        className="px-4 py-2 border-2 border-orange-500 rounded-t-xl md:rounded-l-xl md:rounded-tr-none w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-orange-500 text-orange-600 placeholder-orange-400"
                     />
 
                     {/* Category Dropdown */}
                     <select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="px-4 py-2 border-2 border-orange-500 rounded-r-md ml-2 focus:outline-none focus:ring-2 focus:ring-orange-500 text-orange-600 bg-white"
+                        className="px-4 py-2 border-2 border-orange-500 rounded-b-xl md:rounded-r-xl md:rounded-bl-none md:ml-0 border-t-0 md:border-t-2 md:border-l-0 w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-orange-500 text-orange-600 bg-white"
                     >
                         {categories.map(cat => (
                             <option key={cat} value={cat}>{cat}</option>
@@ -92,12 +104,14 @@ const Courses = () => {
 
             {/* Courses Grid */}
             {searchLoading ? (
-                <div className="flex justify-center items-center h-64">
-                    <span className="loading loading-spinner text-primary w-16 h-16"></span>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 max-w-full mx-auto">
+                    {[1, 2, 3].map((i) => (
+                        <CardSkeleton key={i} />
+                    ))}
                 </div>
             ) : (
                 <Suspense fallback={<span>Loading courses...</span>}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 px-5 max-w-full mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 max-w-full mx-auto">
                         {filteredCourses.map(course => (
                             <CourseCard key={course._id} course={course} />
                         ))}

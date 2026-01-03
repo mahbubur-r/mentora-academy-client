@@ -25,12 +25,13 @@ const NavBar = () => {
 
     const links =
         <>
-            <Link to='/'><li className='ml-4 md:text-3xl font-bold text-[#FF8811]'>Home</li></Link>
-            <Link to='/courses'><li className='ml-4 md:text-3xl font-bold text-[#FF8811] '>Courses</li></Link>
+            <Link to='/'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Home</li></Link>
+            <Link to='/courses'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Courses</li></Link>
+            <Link to='/top-courses'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Top Rated</li></Link>
 
             {user && (
                 <div className="dropdown dropdown-hover ">
-                    <label tabIndex={0} className="cursor-pointer ml-4 md:text-3xl font-bold text-[#FF8811]">Dashboard</label>
+                    <label tabIndex={0} className="cursor-pointer ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition">Dashboard</label>
 
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 md:text-lg font-semibold text-[#FF8811]">
                         <li><Link to="/profile">Profile</Link></li>
@@ -42,8 +43,8 @@ const NavBar = () => {
             )}
         </>
     return (
-        <div className='Navbar parent bg-[#f9f9f9] text-gray-800 shadow'>
-            <div className="navbar bg-base-100">
+        <div className='Navbar parent bg-[#f9f9f9]/90 backdrop-blur-md text-gray-800 shadow sticky top-0 z-50'>
+            <div className="navbar bg-base-100 px-4 md:px-16">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -51,11 +52,11 @@ const NavBar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            className="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-2">
                             {links}
                         </ul>
                     </div>
-                    <div className='flex justify-between items-center md:ml-10'>
+                    <div className='flex justify-between items-center'>
                         <Link to='/'>
                             <img className='h-[50px] w-[50px] rounded-full mr-2' src="/logo.png" alt="Logo" />
                         </Link>
