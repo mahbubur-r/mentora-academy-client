@@ -1,4 +1,4 @@
-import React, { Suspense, use, useEffect, useState } from 'react';
+import React, { Suspense, use, useEffect, useState, useRef } from 'react';
 import CourseCard from '../CourseCard/CourseCard';
 import CardSkeleton from '../../components/Skeleton/CardSkeleton';
 
@@ -13,6 +13,8 @@ const Courses = () => {
     const [category, setCategory] = useState("All");
     const [loading, setLoading] = useState(true);
     const [searchLoading, setSearchLoading] = useState(false);
+    const [visibleCount, setVisibleCount] = useState(8);
+    const observerTarget = useRef(null);
 
     // Simulate initial page loading
     useEffect(() => {
@@ -30,6 +32,36 @@ const Courses = () => {
         course1.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
         (category === "All" || course1.category === category)
     );
+
+    // Reset visible count when filters change
+    useEffect(() => {
+        setVisibleCount(8);
+    }, [searchTerm, category]);
+
+    // Infinite Scroll Observer
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            entries => {
+                if (entries[0].isIntersecting) {
+                    setVisibleCount(prev => prev + 4);
+                }
+            },
+            { threshold: 1.0 }
+        );
+
+        const currentTarget = observerTarget.current;
+        if (currentTarget) {
+            observer.observe(currentTarget);
+        }
+
+        return () => {
+            if (currentTarget) {
+                observer.unobserve(currentTarget);
+            }
+        };
+    }, [filteredCourses]);
+
+    const visibleCourses = filteredCourses.slice(0, visibleCount);
 
     // Handle search with small spinner delay
     const handleSearchChange = (e) => {
@@ -112,10 +144,17 @@ const Courses = () => {
             ) : (
                 <Suspense fallback={<span>Loading courses...</span>}>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-8 max-w-full mx-auto">
-                        {filteredCourses.map(course => (
+                        {visibleCourses.map(course => (
                             <CourseCard key={course._id} course={course} />
                         ))}
                     </div>
+
+                    {/* Infinite Scroll Trigger / Loader */}
+                    {visibleCount < filteredCourses.length && (
+                        <div ref={observerTarget} className="mt-8 text-center flex justify-center py-4">
+                            <span className="loading loading-spinner text-[#FF8811] loading-lg"></span>
+                        </div>
+                    )}
                 </Suspense>
             )}
         </div>
