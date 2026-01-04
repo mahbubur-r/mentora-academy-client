@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const BecomeInstructor = () => {
     return (
-        <section className="py-16 px-4 md:px-16 bg-white">
+        <section className="py-16 px-4 md:px-16 bg-base-100">
             <div className="rounded-3xl bg-gradient-to-r from-[#1e003e] to-[#3a0078] p-8 md:p-16 text-center md:text-left flex flex-col md:flex-row items-center justify-between shadow-2xl overflow-hidden relative">
                 {/* Decorative circles */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
@@ -11,7 +11,7 @@ const BecomeInstructor = () => {
 
                 <div className="md:w-2/3 z-10">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                        Become an <span className="text-[#FF8811]">Instructor</span>
+                        Become an <span className="text-[#FF8811]">Learner</span>
                     </h2>
                     <p className="text-gray-300 text-lg mb-8 max-w-xl">
                         Join our community of experts and share your knowledge with millions of students around the world. Earn money while making a difference.

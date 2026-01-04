@@ -79,50 +79,48 @@ const EnrolledCourses = () => {
                     <p className="mb-5 text-center">You haven't enrolled in any courses yet.</p>
                 </div>
             ) : (
-                enrolledCourses.map((course) => (
-                    <div
-                        key={course._id}
-                        className="border border-gray-300 rounded-xl flex flex-col md:flex-row justify-between items-center md:mt-5 md:mx-5 md:px-4 mx-auto p-3 shadow-sm"
-                    >
-                        <div className="flex justify-between items-center gap-7 w-full">
-                            <figure className="w-[100px] h-[100px] md:w-[150px] md:h-[150px] mx-auto mt-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-10 px-4">
+                    {enrolledCourses.map((course) => (
+                        <div
+                            key={course._id}
+                            className="card bg-base-100 shadow-xl flex flex-col h-full border border-base-300 hover:shadow-2xl transition-all duration-300"
+                        >
+                            <figure className="relative h-48 overflow-hidden">
                                 <img
-                                    className="md:h-[150px] w-full object-cover rounded"
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                     src={course.image}
                                     alt={course.title}
                                 />
+                                <div className="absolute top-3 right-3 bg-base-100/90 backdrop-blur-sm px-2 py-1 rounded-lg text-xs font-bold text-[#FF8811] shadow-sm">
+                                    {course.category || 'Course'}
+                                </div>
                             </figure>
 
-                            <div className="md:m-5 flex-1">
-                                <h2 className="text-xl font-semibold">
-                                    {course.title}{' '}
-                                    <span className="text-sm hidden md:inline text-gray-600">
-                                        : {course.description}
-                                    </span>
+                            <div className="card-body flex-grow p-5">
+                                <h2 className="card-title text-lg font-bold text-base-content line-clamp-2 min-h-[56px] mb-2">
+                                    {course.title}
                                 </h2>
+                                <p className="text-sm text-base-content/70 line-clamp-3 mb-4">
+                                    {course.description}
+                                </p>
 
-                                <div className="md:card-actions gap-3 flex items-center mt-2">
-                                    <button className="md:btn md:bg-[#F1F5E8] md:text-[#00D390] text-[#00D390]">
-                                        <i className="fa-solid fa-download"></i> {course.purchases || 0}
-                                    </button>
-                                    <button className="md:btn md:bg-[#FFF0E1] md:text-[#FF8811] text-[#FF8811]">
-                                        <i className="fa-solid fa-star"></i> {course.ratingAvg || 0}
-                                    </button>
-                                    <button className="md:btn md:bg-[#FFF0E1] md:text-[#FF8811] text-[#FF8811]">
-                                        <i className="fa-solid fa-cloud-arrow-down"></i> {course.size || 0} MB
+                                <div className="flex items-center gap-2 mt-auto text-sm text-base-content/60 mb-4">
+                                    <span className="flex items-center gap-1 justify-center bg-base-200 px-3 py-1 rounded-full"><i className="fa-solid fa-download text-[#00D390]"></i> {course.purchases || 0}</span>
+                                    <span className="flex items-center gap-1 justify-center bg-base-200 px-3 py-1 rounded-full"><i className="fa-solid fa-star text-[#FF8811]"></i> {course.ratingAvg || 0}</span>
+                                </div>
+
+                                <div className="card-actions justify-end mt-2">
+                                    <button
+                                        className="btn btn-error btn-sm text-white w-full"
+                                        onClick={() => handleRemove(course._id)}
+                                    >
+                                        <i className="fa-solid fa-trash-can mr-2"></i> Remove Course
                                     </button>
                                 </div>
                             </div>
                         </div>
-
-                        <button
-                            className="mb-5 md:mb-1 btn rounded-lg text-white bg-red-500"
-                            onClick={() => handleRemove(course._id)}
-                        >
-                            Remove
-                        </button>
-                    </div>
-                ))
+                    ))}
+                </div>
             )}
         </div>
     );

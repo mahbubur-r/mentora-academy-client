@@ -9,25 +9,25 @@ const LearningPath = () => {
     ];
 
     return (
-        <section className="py-16 px-4 md:px-16 bg-white">
+        <section className="py-16 px-4 md:px-16 bg-base-100">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 text-base-content">
                     Your Learning <span className="text-[#b413e1]">Journey</span>
                 </h2>
-                <p className="text-gray-500 max-w-2xl mx-auto">
+                <p className="text-base-content/70 max-w-2xl mx-auto">
                     Start from scratch and become a pro with our structured learning paths.
                 </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {steps.map((item) => (
-                    <div key={item.id} className="relative p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-[#fff9ee] transition-colors duration-300 group">
+                    <div key={item.id} className="relative p-6 rounded-2xl bg-base-200 border border-base-300 hover:bg-base-100 transition-colors duration-300 group">
                         <div className="absolute -top-6 left-6 w-12 h-12 bg-gradient-to-r from-[#ffcc00] to-[#ff00e4] rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                             {item.step}
                         </div>
-                        <h3 className="mt-8 text-xl font-bold text-gray-800 mb-2 group-hover:text-[#FF8811] transition-colors">
+                        <h3 className="mt-8 text-xl font-bold text-base-content mb-2 group-hover:text-[#FF8811] transition-colors">
                             {item.title}
                         </h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">
+                        <p className="text-base-content/70 text-sm leading-relaxed">
                             {item.desc}
                         </p>
                     </div>

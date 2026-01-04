@@ -11,7 +11,7 @@ const DashboardLayout = () => {
     };
 
     return (
-        <div className="flex h-screen bg-[#f9f9f9]">
+        <div className="flex h-screen bg-base-200">
             {/* Sidebar */}
             <DashboardSidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
@@ -21,7 +21,7 @@ const DashboardLayout = () => {
                 <DashboardNavbar toggleSidebar={toggleSidebar} />
 
                 {/* Page Content */}
-                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-[#f9f9f9] p-4">
+                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-base-200 p-4">
                     <Outlet />
                 </main>
             </div>

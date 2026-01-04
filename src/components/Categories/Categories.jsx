@@ -15,12 +15,12 @@ const Categories = () => {
     ];
 
     return (
-        <section className="py-16 px-4 md:px-16 bg-gray-50">
+        <section className="py-16 px-4 md:px-16 bg-base-200">
             <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 text-base-content">
                     Explore <span className="text-[#FF8811]">Categories</span>
                 </h2>
-                <p className="text-gray-500 max-w-2xl mx-auto">
+                <p className="text-base-content/70 max-w-2xl mx-auto">
                     Discover your passion among our diverse range of topics and skills.
                 </p>
             </div>
@@ -28,12 +28,12 @@ const Categories = () => {
                 {categories.map((cat) => (
                     <Link to="/courses" key={cat.id}>
                         <div
-                            className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer border border-gray-100 h-full"
+                            className="flex flex-col items-center p-6 bg-base-100 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer border border-base-300 h-full"
                         >
                             <div className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-4 ${cat.color}`}>
                                 {cat.icon}
                             </div>
-                            <h3 className="font-bold text-lg text-gray-800">{cat.name}</h3>
+                            <h3 className="font-bold text-lg text-base-content">{cat.name}</h3>
                         </div>
                     </Link>
                 ))}

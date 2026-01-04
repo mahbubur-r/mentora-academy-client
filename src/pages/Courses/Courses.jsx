@@ -142,14 +142,14 @@ const Courses = () => {
                         placeholder="Search courses..."
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-64 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-gray-700 shadow-sm transition-all"
+                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-64 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-base-content bg-base-100 shadow-sm transition-all"
                     />
 
                     {/* Category Dropdown */}
                     <select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-48 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-gray-700 bg-white shadow-sm transition-all cursor-pointer"
+                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-48 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-base-content bg-base-100 shadow-sm transition-all cursor-pointer"
                     >
                         {categories.map(cat => (
                             <option key={cat} value={cat}>{cat}</option>
@@ -160,7 +160,7 @@ const Courses = () => {
                     <select
                         value={priceRange}
                         onChange={(e) => setPriceRange(e.target.value)}
-                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-48 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-gray-700 bg-white shadow-sm transition-all cursor-pointer"
+                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-48 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-base-content bg-base-100 shadow-sm transition-all cursor-pointer"
                     >
                         <option value="All">All Prices</option>
                         <option value="Free">Free</option>
@@ -173,7 +173,7 @@ const Courses = () => {
                     <select
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
-                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-56 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-gray-700 bg-white shadow-sm transition-all cursor-pointer"
+                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-56 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-base-content bg-base-100 shadow-sm transition-all cursor-pointer"
                     >
                         <option value="Default">Sort By: Default</option>
                         <option value="Price: Low to High">Price: Low to High</option>

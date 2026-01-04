@@ -37,7 +37,7 @@ const Expertise = () => {
         {expertiseData.concat(expertiseData).map((expert, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl p-6 shadow-lg w-60 flex-shrink-0 text-center mb-8"
+            className="bg-base-200 rounded-2xl p-6 shadow-lg w-60 flex-shrink-0 text-center mb-8"
           >
             <div className="w-24 h-24 mx-auto mb-4">
               <img
@@ -46,9 +46,9 @@ const Expertise = () => {
                 className="w-full h-full object-cover rounded-full border-2 border-indigo-500"
               />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-1">{expert.name}</h3>
+            <h3 className="text-xl font-semibold text-base-content mb-1">{expert.name}</h3>
             <p className="text-indigo-600 font-medium mb-1">{expert.sector}</p>
-            <p className="text-gray-500 text-sm">{expert.experience}</p>
+            <p className="text-base-content/70 text-sm">{expert.experience}</p>
           </div>
         ))}
       </motion.div>

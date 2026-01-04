@@ -35,7 +35,7 @@ const DashboardSidebar = ({ isOpen, toggleSidebar }) => {
 
             {/* Sidebar Container */}
             <div
-                className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed inset-y-0 left-0 z-50 w-64 bg-base-100 shadow-lg transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'
                     }`}
             >
                 <div className="flex items-center justify-center h-20 shadow-md">
@@ -56,8 +56,8 @@ const DashboardSidebar = ({ isOpen, toggleSidebar }) => {
                                 className={({ isActive }) =>
                                     `flex items-center px-6 py-3 font-bold transition-colors duration-200 
                                     ${isActive
-                                        ? 'bg-[#f4e6fa] border-r-4 border-[#b413e1] text-[#b413e1]'
-                                        : 'text-gray-600 hover:bg-gray-50 hover:text-[#b413e1]'
+                                        ? 'bg-base-200 border-r-4 border-[#b413e1] text-[#b413e1]'
+                                        : 'text-base-content/70 hover:bg-base-200 hover:text-[#b413e1]'
                                     }`
                                 }
                             >
@@ -69,7 +69,7 @@ const DashboardSidebar = ({ isOpen, toggleSidebar }) => {
                     <li>
                         <button
                             onClick={handleLogout}
-                            className="flex w-full items-center px-6 py-3 text-gray-600 font-bold hover:bg-gray-50 hover:text-[#b413e1] transition-colors duration-200"
+                            className="flex w-full items-center px-6 py-3 text-base-content/70 font-bold hover:bg-base-200 hover:text-[#b413e1] transition-colors duration-200"
                         >
                             <span className="mr-3 text-xl"><BiLogOut /></span>
                             Logout

@@ -29,7 +29,7 @@ const Blog = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-base-200">
             <title>Our Blog</title>
             {/* Header Section */}
             <div className="bg-gradient-to-r from-[#b413e1] to-[#FF8811] py-16 text-center">
@@ -40,15 +40,15 @@ const Blog = () => {
             <div className="max-w-7xl mx-auto py-12 px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {blogs.map((blog) => (
-                        <div key={blog.id} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col">
+                        <div key={blog.id} className="bg-base-100 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col">
                             <img src={blog.image} alt={blog.title} className="h-48 w-full object-cover" />
                             <div className="p-6 flex-1 flex flex-col">
-                                <div className="flex justify-between items-center text-sm text-gray-500 mb-3">
+                                <div className="flex justify-between items-center text-sm text-base-content/70 mb-3">
                                     <span>{blog.date}</span>
                                     <span>By {blog.author}</span>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-800 mb-3 hover:text-[#b413e1] transition-colors cursor-pointer">{blog.title}</h3>
-                                <p className="text-gray-600 mb-4 flex-1">{blog.excerpt}</p>
+                                <h3 className="text-xl font-bold text-base-content mb-3 hover:text-[#b413e1] transition-colors cursor-pointer">{blog.title}</h3>
+                                <p className="text-base-content/70 mb-4 flex-1">{blog.excerpt}</p>
                                 {/* <button className="mt-auto text-[#FF8811] font-semibold hover:text-[#e07000] transition-colors self-start">
                                     Read More →
                                 </button> */}

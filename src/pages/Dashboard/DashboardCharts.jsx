@@ -26,8 +26,8 @@ const DashboardCharts = ({ courses }) => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Pie Chart */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Category Distribution</h3>
+            <div className="bg-base-100 p-6 rounded-xl shadow-md">
+                <h3 className="text-xl font-bold text-base-content mb-4 border-b pb-2">Category Distribution</h3>
                 <div className="h-80 w-full">
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
@@ -53,8 +53,8 @@ const DashboardCharts = ({ courses }) => {
             </div>
 
             {/* Bar Chart */}
-            <div className="bg-white p-6 rounded-xl shadow-md">
-                <h3 className="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Top Categories</h3>
+            <div className="bg-base-100 p-6 rounded-xl shadow-md">
+                <h3 className="text-xl font-bold text-base-content mb-4 border-b pb-2">Top Categories</h3>
                 <div className="h-80 w-full">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart

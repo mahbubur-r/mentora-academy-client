@@ -10,7 +10,7 @@ const Contact = () => {
         e.target.reset(); // clear the form
     }
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-base-100">
             <title>Contact Us</title>
             {/* Header Section */}
             <div className="bg-gradient-to-r from-[#b413e1] to-[#FF8811] py-16 text-center">
@@ -23,8 +23,8 @@ const Contact = () => {
                     {/* Contact Info */}
                     <div className="space-y-8">
                         <div>
-                            <h2 className="text-2xl font-bold text-gray-800 mb-4">Get in Touch</h2>
-                            <p className="text-gray-600 leading-relaxed">
+                            <h2 className="text-2xl font-bold text-base-content mb-4">Get in Touch</h2>
+                            <p className="text-base-content/70 leading-relaxed">
                                 Have questions about our courses or need support? Fill out the form or reach out to us directly through the contact information below.
                             </p>
                         </div>
@@ -35,8 +35,8 @@ const Contact = () => {
                                     <FaPhone className="text-xl" />
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-gray-800">Phone</p>
-                                    <p className="text-gray-600">+1 (555) 123-4567</p>
+                                    <p className="font-semibold text-base-content">Phone</p>
+                                    <p className="text-base-content/70">+1 (555) 123-4567</p>
                                 </div>
                             </div>
 
@@ -45,8 +45,8 @@ const Contact = () => {
                                     <FaEnvelope className="text-xl" />
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-gray-800">Email</p>
-                                    <p className="text-gray-600">supprt@mentora.com</p>
+                                    <p className="font-semibold text-base-content">Email</p>
+                                    <p className="text-base-content/70">supprt@mentora.com</p>
                                 </div>
                             </div>
 
@@ -55,37 +55,37 @@ const Contact = () => {
                                     <FaMapMarkerAlt className="text-xl" />
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-gray-800">Address</p>
-                                    <p className="text-gray-600">123 Learning Street, Knowledge City, Web 3.0</p>
+                                    <p className="font-semibold text-base-content">Address</p>
+                                    <p className="text-base-content/70">123 Learning Street, Knowledge City, Web 3.0</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div className="bg-base-200 p-8 rounded-2xl shadow-sm border border-base-300">
                         <form onSubmit={handleSendMessage} className="space-y-6">
                             <div>
-                                <label className="block text-gray-700 font-medium mb-2">Full Name</label>
+                                <label className="block text-base-content font-medium mb-2">Full Name</label>
                                 <input
                                     type="text"
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#b413e1] focus:ring-1 focus:ring-[#b413e1] transition-colors"
+                                    className="w-full px-4 py-3 rounded-lg border border-base-300 bg-base-100 text-base-content focus:outline-none focus:border-[#b413e1] focus:ring-1 focus:ring-[#b413e1] transition-colors"
                                     placeholder="John Doe"
                                 />
                             </div>
                             <div>
-                                <label className="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <label className="block text-base-content font-medium mb-2">Email Address</label>
                                 <input
                                     type="email"
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#b413e1] focus:ring-1 focus:ring-[#b413e1] transition-colors"
+                                    className="w-full px-4 py-3 rounded-lg border border-base-300 bg-base-100 text-base-content focus:outline-none focus:border-[#b413e1] focus:ring-1 focus:ring-[#b413e1] transition-colors"
                                     placeholder="john@example.com"
                                 />
                             </div>
                             <div>
-                                <label className="block text-gray-700 font-medium mb-2">Message</label>
+                                <label className="block text-base-content font-medium mb-2">Message</label>
                                 <textarea
                                     rows="4"
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#b413e1] focus:ring-1 focus:ring-[#b413e1] transition-colors"
+                                    className="w-full px-4 py-3 rounded-lg border border-base-300 bg-base-100 text-base-content focus:outline-none focus:border-[#b413e1] focus:ring-1 focus:ring-[#b413e1] transition-colors"
                                     placeholder="How can we help you?"
                                 ></textarea>
                             </div>

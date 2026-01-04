@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { BiLogOut } from 'react-icons/bi';
 import { FaBars } from 'react-icons/fa';
+import ThemeToggle from '../pages/ThemeToggle/ThemeToggle';
 
 const DashboardNavbar = ({ toggleSidebar }) => {
     const { user, logout } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const DashboardNavbar = ({ toggleSidebar }) => {
     }
 
     return (
-        <header className="flex justify-between items-center py-4 px-6 bg-[#f9f9f9]/90 backdrop-blur-md shadow-sm h-20 sticky top-0 z-40">
+        <header className="flex justify-between items-center py-4 px-6 bg-base-100/90 backdrop-blur-md shadow-sm h-20 sticky top-0 z-40">
             <div className="flex items-center">
                 {/* Mobile menu button */}
                 <button
@@ -29,6 +30,7 @@ const DashboardNavbar = ({ toggleSidebar }) => {
                 <h2 className="text-xl font-bold text-[#FF8811]">Dashboard</h2>
             </div>
             <div className="flex items-center space-x-4">
+                <ThemeToggle />
                 {user && (
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

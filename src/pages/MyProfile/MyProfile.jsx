@@ -43,7 +43,7 @@ const MyProfile = () => {
     };
 
     return (
-        <div className="bg-white min-h-[calc(100vh-6rem)] shadow-sm rounded-xl overflow-hidden">
+        <div className="bg-base-100 min-h-[calc(100vh-6rem)] shadow-sm rounded-xl overflow-hidden">
             <title>Dashboard | My Profile</title>
             {/* Cover Section */}
             <div className="h-48 bg-gradient-to-r from-[#b413e1] via-[#8a0cb0] to-[#FF8811] relative">
@@ -59,17 +59,17 @@ const MyProfile = () => {
                             <img
                                 src={photoURL || '/user.png'}
                                 alt="Profile"
-                                className="w-32 h-32 rounded-full border-4 border-white shadow-md object-cover bg-white"
+                                className="w-32 h-32 rounded-full border-4 border-base-100 shadow-md object-cover bg-base-100"
                             />
                             {isEditing && (
-                                <div className="absolute bottom-2 right-2 bg-gray-800 text-white p-2 rounded-full shadow-lg cursor-not-allowed opacity-70" title="Photo edit via URL below">
+                                <div className="absolute bottom-2 right-2 bg-base-300 text-base-content p-2 rounded-full shadow-lg cursor-not-allowed opacity-70" title="Photo edit via URL below">
                                     <FaCamera size={14} />
                                 </div>
                             )}
                         </div>
                         <div className="ml-6 mb-2 hidden md:block">
-                            <h1 className="text-3xl font-bold text-gray-800">{name}</h1>
-                            <p className="text-gray-500">{user?.email}</p>
+                            <h1 className="text-3xl font-bold text-base-content">{name}</h1>
+                            <p className="text-base-content/70">{user?.email}</p>
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@ const MyProfile = () => {
                             <div className="flex gap-2">
                                 <button
                                     onClick={handleCancel}
-                                    className="btn btn-ghost text-gray-600 gap-2"
+                                    className="btn btn-ghost text-base-content gap-2"
                                     disabled={loading}
                                 >
                                     <FaTimes /> Cancel
@@ -104,14 +104,14 @@ const MyProfile = () => {
 
                 {/* Mobile Name/Email (Visible only on small screens) */}
                 <div className="md:hidden mb-8">
-                    <h1 className="text-2xl font-bold text-gray-800">{name}</h1>
-                    <p className="text-gray-500">{user?.email}</p>
+                    <h1 className="text-2xl font-bold text-base-content">{name}</h1>
+                    <p className="text-base-content/70">{user?.email}</p>
                 </div>
 
 
                 {/* Info Grid / Edit Form */}
-                <div className="border-t pt-8">
-                    <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-gray-700">
+                <div className="border-t border-base-300 pt-8">
+                    <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-base-content">
                         <FaUser className="text-[#b413e1]" /> Personal Information
                     </h3>
 
@@ -119,36 +119,36 @@ const MyProfile = () => {
                         <form onSubmit={handleUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Full Name</span>
+                                    <span className="label-text font-semibold text-base-content">Full Name</span>
                                 </label>
                                 <input
                                     type="text"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    className="input input-bordered w-full focus:outline-none focus:border-[#b413e1]"
+                                    className="input input-bordered w-full focus:outline-none focus:border-[#b413e1] bg-base-100 text-base-content"
                                     required
                                 />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Profile Photo URL</span>
+                                    <span className="label-text font-semibold text-base-content">Profile Photo URL</span>
                                 </label>
                                 <input
                                     type="text"
                                     value={photoURL}
                                     onChange={(e) => setPhotoURL(e.target.value)}
-                                    className="input input-bordered w-full focus:outline-none focus:border-[#b413e1]"
+                                    className="input input-bordered w-full focus:outline-none focus:border-[#b413e1] bg-base-100 text-base-content"
                                     placeholder="https://example.com/photo.jpg"
                                 />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Email Address</span>
+                                    <span className="label-text font-semibold text-base-content">Email Address</span>
                                 </label>
                                 <input
                                     type="email"
                                     value={user?.email || ""}
-                                    className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+                                    className="input input-bordered w-full bg-base-200 cursor-not-allowed text-base-content/70"
                                     disabled
                                     title="Email cannot be changed"
                                 />
@@ -160,18 +160,18 @@ const MyProfile = () => {
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl">
                             <div className="space-y-1">
-                                <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">Full Name</p>
-                                <p className="text-lg font-semibold text-gray-800 border-b pb-2">{name}</p>
+                                <p className="text-sm font-medium text-base-content/70 uppercase tracking-wider">Full Name</p>
+                                <p className="text-lg font-semibold text-base-content border-b border-base-300 pb-2">{name}</p>
                             </div>
                             <div className="space-y-1">
-                                <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">Email Address</p>
-                                <p className="text-lg font-semibold text-gray-800 border-b pb-2 flex items-center gap-2">
+                                <p className="text-sm font-medium text-base-content/70 uppercase tracking-wider">Email Address</p>
+                                <p className="text-lg font-semibold text-base-content border-b border-base-300 pb-2 flex items-center gap-2">
                                     {user?.email} <FaCheckCircle className="text-green-500 text-sm" title="Verified" />
                                 </p>
                             </div>
                             <div className="space-y-1 md:col-span-2">
-                                <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">Profile Photo URL</p>
-                                <p className="text-lg text-gray-600 truncate border-b pb-2">{photoURL || "Not set"}</p>
+                                <p className="text-sm font-medium text-base-content/70 uppercase tracking-wider">Profile Photo URL</p>
+                                <p className="text-lg text-base-content border-b border-base-300 pb-2 truncate">{photoURL || "Not set"}</p>
                             </div>
                         </div>
                     )}
