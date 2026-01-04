@@ -2,82 +2,72 @@
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![DaisyUI](https://img.shields.io/badge/DaisyUI-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
-**Live URL:** [https://mentora-academy.netlify.app/](https://mentora-academy.netlify.app/)
-
+**Live URL:** [https://mentora-academy.netlify.app/](https://mentora-academy.netlify.app/)  
 **Server URL:** [https://mentora-academy-server.vercel.app/](https://mentora-academy-server.vercel.app/)
 
 ---
 
 ## 🌟 Highlights
 
-- Full **CRUD operations** for courses (Add, Update, Delete).  
-- **Enrollment management:** Users can enroll/un-enroll from courses.  
-- Personalized dashboards for **learners** and **instructors**.  
-- Role-based access with **secure authentication** (Google & email/password).  
-- Fully responsive, smooth, and modern UI with animations and notifications.
+- **Advanced Dashboard:** Interactive charts (Pie/Bar) and real-time statistics.
+- **Dark Mode Support:** Fully theme-aware UI with a toggle for Light/Dark modes.
+- **Full Course Management:** Filtering, sorting, searching, and enrollment tracking.
+- **Modern UI/UX:** Glassmorphism effects, skeleton loaders, and smooth animations.
+- **Responsive Design:** Optimized for mobile, tablet, and desktop experiences.
 
 ---
 
 ## 🧠 Project Overview
 
-**Mentora Academy** is a full-stack **online learning platform** designed for **both learners and instructors**.  
+**Mentora Academy** is a full-stack **online learning platform** designed to provide a seamless educational experience.
 
-- **Learners** can browse courses, enroll, track progress, and manage their learning.  
-- **Instructors** can create, update, and delete courses, and manage student enrollments.  
-- All course data, user enrollments, and instructor activities are stored in **MongoDB**, making the platform dynamic and scalable.  
-
-This project delivers a **modern, responsive, and interactive educational experience** combining React, Tailwind CSS, Firebase Authentication, and MongoDB.
+- **Learners** can browse diverse categories, enroll in courses, track their progress via a dedicated dashboard, and manage their profile.
+- **Instructors/Admins** can manage course content and view platform analytics. (Note: Role-based features integrated).
+- All data is securely stored in **MongoDB** and authentication is handled via **Firebase**.
 
 ---
 
 ## ✨ Key Features
 
 ### 🧭 Navigation & UI
-- Responsive navbar with role-based **Login / Logout** buttons.  
-- User avatar redirects to learner or instructor dashboard.  
+- **Theme Toggle:** Switch between Light and Dark modes instantly.
+- **Responsive Navbar:** Optimized mobile menu with brand-aligned colors.
+- **Dynamic Active Links:** Visual feedback for current routes.
 
-### 📚 Course Management (CRUD)
-- **Instructors:** Add, update, and delete courses.  
-- **Learners:** Enroll in or un-enroll from courses.  
-- Data is **persisted in MongoDB** for all operations.  
+### 📊 Interactive Dashboard
+- **Visual Analytics:** Added `Recharts` for visualizing category distribution and enrollment stats.
+- **Recent Activity:** Table view of recently enrolled courses with status and ratings.
+- **Stat Cards:** Quick view of Total Courses, Enrolled, and Completed.
 
-### 🧾 Course Details Page
-- Detailed course information including description, instructor info, reviews, and ratings.  
-- “Enroll Now” button for learners; instructor sees enrolled students.  
+### 📚 Course Exploration
+- **Advanced Filters:** Filter by Price Range (Free, Under $50, etc.) and Category.
+- **Sorting:** Sort by Price (Low/High) or Highest Rated.
+- **Search:** Real-time search with debounce.
+- **Grid Layout:** Uniform card design for better browsing experience.
 
-### 👩‍🎓 Learner Dashboard
-- View all enrolled courses.  
-- Track progress and continue learning.  
-- Remove courses if needed.  
-
-### 👨‍🏫 Instructor Dashboard
-- Manage courses: add new courses, edit content, or remove courses.  
-- Track student enrollment and engagement metrics.  
+### 🧾 Course Details & Interaction
+- **Detailed View:** Course descriptions, instructor info, and ratings.
+- **Enrollment:** One-click enrollment with duplicate checks.
+- **Reviews:** Star rating system integration.
 
 ### 👤 Profile Management
-- Update personal info (name, email, profile photo).  
-- Role-based dashboards synced with Firebase Authentication.  
+- **Full-Width Choice:** Modern profile layout with cover image.
+- **Editable Fields:** Update name and photo URL seamlessly.
 
-### 🔐 Authentication
-- Google Sign-In and email/password login.  
-- Password reset support.  
-- User base enrolled and added courses learners and instructors.  
+### 🔐 Authentication & Security
+- **Firebase Auth:** Google Sign-In and Email/Password login.
+- **Protected Routes:** Secure access to Dashboard and Private resources.
+- **JWT:** Token-based verification for API requests.
 
-### 💌 Newsletter
-- Subscribe via **Formspree** without backend setup.  
-
-### 🧩 Responsive Design
-- Tailwind CSS + DaisyUI for clean and modern UI.  
-- Works seamlessly across mobile, tablet, and desktop devices.  
-
-### ⚡ Notifications & Animations
-- **React Toastify** for toast messages.  
-- **SweetAlert2** for confirmation modals.  
-- **Framer Motion** for smooth animations.
+### 🧩 Additional Pages
+- **Contact Us:** Functional contact form with toast notifications.
+- **Blog:** Articles section with grid layout.
+- **About Us:** Platform mission and vision.
 
 ---
 
@@ -85,15 +75,17 @@ This project delivers a **modern, responsive, and interactive educational experi
 
 | Category          | Tools / Libraries |
 |------------------|------------------|
-| **Frontend**      | React, React Router |
-| **Styling**       | Tailwind CSS, DaisyUI |
-| **API Call**      | AXIOS |
+| **Frontend**      | React, React Router DOM |
+| **Styling**       | Tailwind CSS, DaisyUI (Themes) |
+| **Data Viz**      | Recharts (Pie & Bar Charts) |
+| **State/API**     | Context API, Axios, custom Hooks |
 | **Animations**    | Framer Motion |
-| **Backend**       | Node.js, Express.js, MongoDB |
-| **Auth & Data**   | Firebase Authentication |
-| **UI Enhancements** | React Icons, SweetAlert2, React Toastify |
-| **Form Handling** | Formspree |
-| **Hosting**       | Netlify |
+| **Backend**       | Node.js, Express.js |
+| **Database**      | MongoDB |
+| **Auth**          | Firebase Authentication |
+| **Notifications** | React Toastify, SweetAlert2 |
+| **Icons**         | React Icons |
+| **Hosting**       | Netlify (Client), Vercel (Server) |
 
 ---
 
@@ -103,8 +95,18 @@ This project delivers a **modern, responsive, and interactive educational experi
 
 ```bash
 git clone https://github.com/t-nijum/mentora-academy-client.git
+cd mentora-academy-client
+npm install
+npm run dev
+```
 
+2. Clone the server:
+
+```bash
 git clone https://github.com/t-nijum/mentora-academy-server.git
-
+cd mentora-academy-server
+npm install
+node index.js
+```
 
 ---
