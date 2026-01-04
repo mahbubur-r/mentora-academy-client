@@ -27,19 +27,11 @@ const NavBar = () => {
         <>
             <Link to='/'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Home</li></Link>
             <Link to='/courses'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Courses</li></Link>
-            <Link to='/top-courses'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Top Rated</li></Link>
+            <Link to='/top-courses'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Top Courses</li></Link>
+            <Link to='/about'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>About</li></Link>
 
             {user && (
-                <div className="dropdown dropdown-hover ">
-                    <label tabIndex={0} className="cursor-pointer ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition">Dashboard</label>
-
-                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 md:text-lg font-semibold text-[#FF8811]">
-                        <li><Link to="/profile">Profile</Link></li>
-                        <li><Link to="/enrolled-courses">Enrolled Courses</Link></li>
-                        <li><Link to="/addNewCourses">Add New Course</Link></li>
-                        <li><Link to="/myAddedCourses">My Added Courses</Link></li>
-                    </ul>
-                </div>
+                <Link to='/dashboard'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Dashboard</li></Link>
             )}
         </>
     return (
@@ -75,7 +67,7 @@ const NavBar = () => {
                     <nav className="flex mr-2 justify-between items-center rounded-full shadow-md">
                         <ThemeToggle />
                     </nav>
-                    <Link to='/profile'>
+                    <Link to='/dashboard/profile'>
                         <img className={`mr-1 ${user ? 'w-12 h-12 rounded-full text-center' : 'w-12 h-12 rounded-full border-2 text-black'}`} src={`${user ? user.photoURL : '/user.png'}`} alt="User" />
                     </Link>
                     <div>

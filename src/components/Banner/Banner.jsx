@@ -40,7 +40,7 @@ const Banner = () => {
                     <span className="text-purple-600 ">
                         Your Digital Campus!
                     </span><br />
-                    <p className='md:text-2xl text-[#FF8811]'>Learn, Teach, and Grow</p>
+                    <p className='md:text-2xl text-[#FF8811]'>Learn, Expand, and Grow</p>
                 </motion.h2>
 
                 <motion.p
@@ -48,7 +48,7 @@ const Banner = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.8 }}
                     className="text-gray-500 md:text-xl leading-relaxed max-w-xl text-justify">
-                    Mentora Academy empowers learners and instructors to grow together. Explore top courses in Web Development, Programming, Marketing, Communication, and more, or contribute your own. Gain practical skills, expand your horizons, and create your own path to success.
+                    Mentora Academy empowers learners to grow together. Explore top courses in Web Development, Programming, Marketing, Communication, and more, or contribute your own. Gain practical skills, expand your horizons, and create your own path to success.
                 </motion.p>
 
                 <motion.div

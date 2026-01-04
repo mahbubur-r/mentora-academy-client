@@ -18,6 +18,9 @@ import MyAddedCourses from '../pages/MyAddedCourses/MyAddedCourses';
 import MyAddedCourseDetails from '../pages/MyAddedCourseDetails/MyAddedCourseDetails';
 import UpdateCourse from '../pages/UpdateCourse/UpdateCourse.jsx';
 import EnrolledCourses from '../pages/EnrolledCourses/EnrolledCourses.jsx';
+import About from '../pages/About/About';
+import DashboardLayout from '../layouts/DashboardLayout';
+import DashboardHome from '../pages/Dashboard/DashboardHome';
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +47,10 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Loading />,
       },
       {
+        path: '/about',
+        Component: About
+      },
+      {
         path: '/login',
         Component: Login
       },
@@ -54,10 +61,6 @@ export const router = createBrowserRouter([
       {
         path: '/update-profile',
         element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
-      },
-      {
-        path: '/profile',
-        element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
       },
       {
         path: '/courses',
@@ -79,30 +82,16 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Loading />,
       },
       {
-        path: '/enrolled-courses',
-        element: <PrivateRoute><EnrolledCourses></EnrolledCourses></PrivateRoute>
-      },
-      {
         path: '/courseDetails/:id',
-        // loader: ({params}) => fetch(`http://localhost:3000/courses/${params.id}`),
         loader: ({ params }) => fetch(`https://mentora-academy-server.vercel.app/courses/${params.id}`),
         element: <CourseDetails></CourseDetails>,
         hydrateFallbackElement: <DetailsLoading></DetailsLoading>,
       },
       {
         path: '/myAddedCourseDetails/:id',
-        // loader: ({ params }) => fetch(`http://localhost:3000/add_new_courses/${params.id}`),
         loader: ({ params }) => fetch(`https://mentora-academy-server.vercel.app/add_new_courses/${params.id}`),
         element: <PrivateRoute><MyAddedCourseDetails></MyAddedCourseDetails></PrivateRoute>,
         hydrateFallbackElement: <DetailsLoading></DetailsLoading>,
-      },
-      {
-        path: '/addNewCourses',
-        element: <PrivateRoute><AddNewCourse></AddNewCourse></PrivateRoute>,
-      },
-      {
-        path: '/myAddedCourses',
-        element: <PrivateRoute><MyAddedCourses></MyAddedCourses></PrivateRoute>,
       },
       {
         path: '/updateCourse/:id',
@@ -110,4 +99,30 @@ export const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />
+      },
+      {
+        path: 'profile',
+        element: <MyProfile />
+      },
+      {
+        path: 'enrolled-courses',
+        element: <EnrolledCourses />
+      },
+      {
+        path: 'add-course',
+        element: <AddNewCourse />
+      },
+      {
+        path: 'added-courses',
+        element: <MyAddedCourses />
+      }
+    ]
+  }
 ]);
