@@ -39,8 +39,11 @@ const DashboardSidebar = ({ isOpen, toggleSidebar }) => {
                     }`}
             >
                 <div className="flex items-center justify-center h-20 shadow-md">
-                    <Link to="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#b413e1] to-[#8a0cb0]">
-                        Mentora
+                    <Link to="/" className="flex items-center gap-2">
+                        <img className='h-[40px] w-[40px] rounded-full' src="/logo.png" alt="Logo" />
+                        <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ffcc00] to-[#ff00e4]">
+                            Mentora
+                        </span>
                     </Link>
                 </div>
                 <ul className="flex-col py-4 space-y-2 overflow-y-auto h-[calc(100%-5rem)]">

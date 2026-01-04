@@ -19,6 +19,8 @@ import MyAddedCourseDetails from '../pages/MyAddedCourseDetails/MyAddedCourseDet
 import UpdateCourse from '../pages/UpdateCourse/UpdateCourse.jsx';
 import EnrolledCourses from '../pages/EnrolledCourses/EnrolledCourses.jsx';
 import About from '../pages/About/About';
+import Contact from '../pages/Contact/Contact';
+import Blog from '../pages/Blog/Blog';
 import DashboardLayout from '../layouts/DashboardLayout';
 import DashboardHome from '../pages/Dashboard/DashboardHome';
 
@@ -34,11 +36,30 @@ export const router = createBrowserRouter([
         loader: async () => {
           try {
             const res = await fetch(
-              "https://mentora-academy-server.vercel.app/top-courses"
+              "https://mentora-academy-server.vercel.app/courses"
             );
-            if (!res.ok) throw new Error("Failed to fetch top courses");
+            if (!res.ok) throw new Error("Failed to fetch courses");
             const data = await res.json();
-            return data;
+
+            // Helper to parse purchases string (e.g. "1.5K" -> 1500)
+            const parsePurchases = (str) => {
+              if (typeof str !== 'string') return 0;
+              const num = parseFloat(str.replace(/,/g, ''));
+              if (str.toLowerCase().includes('k')) {
+                return num * 1000;
+              }
+              return num;
+            };
+
+            // Sort by Rating (desc) then Purchases (desc)
+            const topRated = data.sort((a, b) => {
+              if (b.ratingAvg !== a.ratingAvg) {
+                return (b.ratingAvg || 0) - (a.ratingAvg || 0);
+              }
+              return parsePurchases(b.purchases) - parsePurchases(a.purchases);
+            }).slice(0, 8); // Top 8
+
+            return topRated;
           } catch (err) {
             console.error(err);
             return []; // fallback if API fails
@@ -61,6 +82,14 @@ export const router = createBrowserRouter([
       {
         path: '/update-profile',
         element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+      },
+      {
+        path: '/contact',
+        Component: Contact
+      },
+      {
+        path: '/blog',
+        Component: Blog
       },
       {
         path: '/courses',

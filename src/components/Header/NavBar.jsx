@@ -27,7 +27,9 @@ const NavBar = () => {
         <>
             <Link to='/'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Home</li></Link>
             <Link to='/courses'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Courses</li></Link>
-            <Link to='/top-courses'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Top Courses</li></Link>
+            {/* <Link to='/top-courses'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Top Rated</li></Link> */}
+            <Link to='/blog'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Blog</li></Link>
+            <Link to='/contact'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>Contact</li></Link>
             <Link to='/about'><li className='ml-4 md:text-2xl font-bold text-[#FF8811] hover:text-[#b413e1] transition'>About</li></Link>
 
             {user && (

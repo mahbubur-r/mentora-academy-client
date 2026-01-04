@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import axiosInstance from "../../api/axios"; 
+import axiosInstance from "../../api/axios";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const AddNewCourse = () => {
@@ -23,14 +23,14 @@ const AddNewCourse = () => {
             name: form.instructor.value,
             email: form.email.value,
             photo: form.photo.value,
-            featured: form.featured.value, 
+            featured: form.featured.value,
         };
 
         try {
             await axiosInstance.post("/add_new_courses", addNewCourse);
 
             Swal.fire("Added!", "Course added successfully.", "success");
-            navigate("/myAddedCourses");
+            navigate("/dashboard/added-courses");
         } catch (error) {
             console.error("Error adding course:", error);
             Swal.fire("Error", "Failed to add course. Please try again.", "error");

@@ -44,7 +44,7 @@ const UpdateCourse = () => {
 
       if (res.data.modifiedCount > 0) {
         Swal.fire("Updated!", "Course updated successfully.", "success");
-        navigate("/myAddedCourses");
+        navigate("/dashboard/added-courses");
       } else {
         Swal.fire("No Changes", "No updates were made to the course.", "info");
       }
