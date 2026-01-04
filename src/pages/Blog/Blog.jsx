@@ -25,14 +25,6 @@ const Blog = () => {
             image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
             date: "Dec 30, 2025",
             author: "Emily Davis"
-        },
-        {
-            id: 4,
-            title: "Understanding Serverless Architecture",
-            excerpt: "What is serverless and when should you use it? We break down the pros and cons of going serverless for your next big project.",
-            image: "https://images.unsplash.com/photo-1558494949-efdeb6bf80d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            date: "Dec 25, 2025",
-            author: "David Wilson"
         }
     ];
 
@@ -57,9 +49,9 @@ const Blog = () => {
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-800 mb-3 hover:text-[#b413e1] transition-colors cursor-pointer">{blog.title}</h3>
                                 <p className="text-gray-600 mb-4 flex-1">{blog.excerpt}</p>
-                                <button className="mt-auto text-[#FF8811] font-semibold hover:text-[#e07000] transition-colors self-start">
+                                {/* <button className="mt-auto text-[#FF8811] font-semibold hover:text-[#e07000] transition-colors self-start">
                                     Read More →
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     ))}

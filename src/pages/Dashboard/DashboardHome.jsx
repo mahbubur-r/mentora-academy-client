@@ -3,6 +3,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 import DashboardStatCards from './DashboardStatCards';
 import DashboardCharts from './DashboardCharts';
 import DashboardTable from './DashboardTable';
+import DashboardSkeleton from '../../components/Skeleton/DashboardSkeleton';
 
 const DashboardHome = () => {
     const { user } = useContext(AuthContext);
@@ -42,11 +43,7 @@ const DashboardHome = () => {
     }, [user]);
 
     if (loading) {
-        return (
-            <div className="flex justify-center items-center h-full">
-                <span className="loading loading-spinner loading-lg text-[#FF8811]"></span>
-            </div>
-        );
+        return <DashboardSkeleton />;
     }
 
     return (

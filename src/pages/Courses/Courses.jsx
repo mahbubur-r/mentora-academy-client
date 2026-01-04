@@ -11,6 +11,8 @@ const Courses = () => {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [category, setCategory] = useState("All");
+    const [priceRange, setPriceRange] = useState("All");
+    const [sortBy, setSortBy] = useState("Default");
     const [loading, setLoading] = useState(true);
     const [searchLoading, setSearchLoading] = useState(false);
     const [visibleCount, setVisibleCount] = useState(8);
@@ -27,16 +29,52 @@ const Courses = () => {
     // Get unique categories from courses
     const categories = ["All", ...new Set(courses.map(course => course.category))];
 
-    // Filtered list based on search input and selected category
-    const filteredCourses = courses.filter((course1) =>
-        course1.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (category === "All" || course1.category === category)
-    );
+    // Filter Logic
+    const filteredCourses = courses.filter((course) => {
+        const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesCategory = category === "All" || course.category === category;
+
+        // Price Range Logic
+        let matchesPrice = true;
+        const price = parseFloat(course.price);
+        // Note: Assuming price is numeric or clean string. Handle "Free" if needed.
+        // If price is string "Free", parseFloat might be NaN. 
+        // Let's safe check:
+        const isFree = isNaN(price) || price === 0 || course.price === 'Free';
+
+        if (priceRange === "Under $50") {
+            matchesPrice = !isFree && price < 50;
+        } else if (priceRange === "$50 - $100") {
+            matchesPrice = !isFree && price >= 50 && price <= 100;
+        } else if (priceRange === "Over $100") {
+            matchesPrice = !isFree && price > 100;
+        } else if (priceRange === "Free") {
+            matchesPrice = isFree;
+        }
+
+        return matchesSearch && matchesCategory && matchesPrice;
+    });
+
+    // Sorting Logic
+    const sortedCourses = [...filteredCourses].sort((a, b) => {
+        if (sortBy === "Price: Low to High") {
+            const priceA = a.price === 'Free' ? 0 : parseFloat(a.price) || 0;
+            const priceB = b.price === 'Free' ? 0 : parseFloat(b.price) || 0;
+            return priceA - priceB;
+        } else if (sortBy === "Price: High to Low") {
+            const priceA = a.price === 'Free' ? 0 : parseFloat(a.price) || 0;
+            const priceB = b.price === 'Free' ? 0 : parseFloat(b.price) || 0;
+            return priceB - priceA;
+        } else if (sortBy === "Highest Rated") {
+            return (b.ratingAvg || 0) - (a.ratingAvg || 0);
+        }
+        return 0; // Default
+    });
 
     // Reset visible count when filters change
     useEffect(() => {
         setVisibleCount(8);
-    }, [searchTerm, category]);
+    }, [searchTerm, category, priceRange, sortBy]);
 
     // Infinite Scroll Observer
     useEffect(() => {
@@ -59,9 +97,9 @@ const Courses = () => {
                 observer.unobserve(currentTarget);
             }
         };
-    }, [filteredCourses]);
+    }, [sortedCourses]);
 
-    const visibleCourses = filteredCourses.slice(0, visibleCount);
+    const visibleCourses = sortedCourses.slice(0, visibleCount);
 
     // Handle search with small spinner delay
     const handleSearchChange = (e) => {
@@ -92,38 +130,61 @@ const Courses = () => {
     return (
         <div className="mt-10 px-4 md:px-16">
             <title>All Courses</title>
-            <div className="flex flex-col md:flex-row justify-between items-center">
-                <h2 className="text-3xl font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#ffcc00] to-[#ff00e4]">
-                    Total {filteredCourses.length} Courses Found
+            <div className="flex flex-col xl:flex-row justify-between items-center mb-8 gap-4">
+                <h2 className="text-3xl font-bold text-center xl:text-left text-transparent bg-clip-text bg-gradient-to-r from-[#ffcc00] to-[#ff00e4]">
+                    Total {sortedCourses.length} Courses Found
                 </h2>
 
-                <div className="flex flex-col md:flex-row justify-center mb-6 items-center">
+                <div className="flex flex-col lg:flex-row flex-wrap justify-center items-center gap-4">
                     {/* Search Input */}
                     <input
                         type="text"
                         placeholder="Search courses..."
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        className="px-4 py-2 border-2 border-orange-500 rounded-t-xl md:rounded-l-xl md:rounded-tr-none w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-orange-500 text-orange-600 placeholder-orange-400"
+                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-64 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-gray-700 shadow-sm transition-all"
                     />
 
                     {/* Category Dropdown */}
                     <select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="px-4 py-2 border-2 border-orange-500 rounded-b-xl md:rounded-r-xl md:rounded-bl-none md:ml-0 border-t-0 md:border-t-2 md:border-l-0 w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-orange-500 text-orange-600 bg-white"
+                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-48 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-gray-700 bg-white shadow-sm transition-all cursor-pointer"
                     >
                         {categories.map(cat => (
                             <option key={cat} value={cat}>{cat}</option>
                         ))}
                     </select>
+
+                    {/* Price Range Dropdown */}
+                    <select
+                        value={priceRange}
+                        onChange={(e) => setPriceRange(e.target.value)}
+                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-48 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-gray-700 bg-white shadow-sm transition-all cursor-pointer"
+                    >
+                        <option value="All">All Prices</option>
+                        <option value="Free">Free</option>
+                        <option value="Under $50">Under $50</option>
+                        <option value="$50 - $100">$50 - $100</option>
+                        <option value="Over $100">Over $100</option>
+                    </select>
+
+                    {/* Sorting Dropdown */}
+                    <select
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}
+                        className="px-4 py-3 border border-orange-200 rounded-xl w-full lg:w-56 focus:outline-none focus:ring-2 focus:ring-[#FF8811] text-gray-700 bg-white shadow-sm transition-all cursor-pointer"
+                    >
+                        <option value="Default">Sort By: Default</option>
+                        <option value="Price: Low to High">Price: Low to High</option>
+                        <option value="Price: High to Low">Price: High to Low</option>
+                        <option value="Highest Rated">Highest Rated</option>
+                    </select>
                 </div>
-
-
             </div>
 
             {/* No courses found */}
-            {filteredCourses.length === 0 && (
+            {sortedCourses.length === 0 && (
                 <div className="flex flex-col justify-center items-center h-64 text-center mt-10">
                     <img
                         src="/apperror.png"
@@ -150,7 +211,7 @@ const Courses = () => {
                     </div>
 
                     {/* Infinite Scroll Trigger / Loader */}
-                    {visibleCount < filteredCourses.length && (
+                    {visibleCount < sortedCourses.length && (
                         <div ref={observerTarget} className="mt-8 text-center flex justify-center py-4">
                             <span className="loading loading-spinner text-[#FF8811] loading-lg"></span>
                         </div>

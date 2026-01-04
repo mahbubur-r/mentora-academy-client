@@ -28,15 +28,15 @@ const About = () => {
                             <li>Community support and networking</li>
                         </ul>
                     </div>
-                    {/* <div className="bg-white/50 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-100">
-                        <h2 className="text-2xl font-bold mb-4 text-[#FF8811]">For Instructors</h2>
+                    <div className="bg-white/50 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <h2 className="text-2xl font-bold mb-4 text-[#FF8811]">For Learners</h2>
                         <ul className="list-disc list-inside text-gray-700 space-y-2">
                             <li>Share your expertise with a global audience</li>
                             <li>Earn revenue from your courses</li>
                             <li>Easy-to-use course creation tools</li>
                             <li>Grow your personal brand</li>
                         </ul>
-                    </div> */}
+                    </div>
                 </section>
 
                 <section className="text-center mt-12">

@@ -69,14 +69,27 @@ const NavBar = () => {
                     <nav className="flex mr-2 justify-between items-center rounded-full shadow-md">
                         <ThemeToggle />
                     </nav>
-                    <Link to='/dashboard/profile'>
-                        <img className={`mr-1 ${user ? 'w-12 h-12 rounded-full text-center' : 'w-12 h-12 rounded-full border-2 text-black'}`} src={`${user ? user.photoURL : '/user.png'}`} alt="User" />
-                    </Link>
-                    <div>
-                        {
-                            user ? <Link to='/login'><button onClick={handleLogout} className="btn text-white bg-gradient-to-r from-[#ffcc00] to-[#ff00e4]"><BiLogOut /> Logout</button></Link> : <Link to='/login'><button className="btn text-white bg-gradient-to-r from-[#ffcc00] to-[#ff00e4]"> <TbLogin2 />Login</button></Link>
-                        }
-                    </div>
+                    {user ? (
+                        <div className="dropdown dropdown-end z-50">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-12 rounded-full border-2 border-[#b413e1]">
+                                    <img alt="User" src={user.photoURL || '/user.png'} />
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                <li>
+                                    <Link to="/dashboard/profile" className="justify-between font-bold text-gray-700">
+                                        Profile
+                                        <span className="badge bg-[#FF8811] text-white border-none">New</span>
+                                    </Link>
+                                </li>
+                                <li><Link to="/dashboard" className="font-bold text-gray-700">Dashboard</Link></li>
+                                <li><button onClick={handleLogout} className="font-bold text-red-500">Logout</button></li>
+                            </ul>
+                        </div>
+                    ) : (
+                        <Link to='/login'><button className="btn text-white bg-gradient-to-r from-[#ffcc00] to-[#ff00e4]"> <TbLogin2 />Login</button></Link>
+                    )}
 
                 </div>
 

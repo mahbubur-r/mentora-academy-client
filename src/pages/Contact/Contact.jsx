@@ -1,7 +1,14 @@
 import React from 'react';
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
+import { toast } from 'react-toastify';
+
 const Contact = () => {
+    const handleSendMessage = (e) => {
+        e.preventDefault();
+        toast.success("Message sent successfully!");
+        e.target.reset(); // clear the form
+    }
     return (
         <div className="min-h-screen bg-white">
             <title>Contact Us</title>
@@ -57,7 +64,7 @@ const Contact = () => {
 
                     {/* Contact Form */}
                     <div className="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100">
-                        <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                        <form onSubmit={handleSendMessage} className="space-y-6">
                             <div>
                                 <label className="block text-gray-700 font-medium mb-2">Full Name</label>
                                 <input
